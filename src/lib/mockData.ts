@@ -27,8 +27,8 @@ function randomCallsign(): string {
 }
 
 function randomICAO(): string {
-    const hex = '0123456789abcdef';
-    return Array.from({ length: 6 }, () => pick([...hex])).join('');
+    const hex = '0123456789abcdef'.split('');
+    return Array.from({ length: 6 }, () => pick(hex)).join('');
 }
 
 function randomMMSI(): string {
