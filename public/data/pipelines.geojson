@@ -1,0 +1,227 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Druzhba Pipeline",
+                "type": "oil",
+                "status": "active"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        52.0,
+                        52.2
+                    ],
+                    [
+                        45.0,
+                        52.5
+                    ],
+                    [
+                        37.6,
+                        55.7
+                    ],
+                    [
+                        33.0,
+                        52.0
+                    ],
+                    [
+                        30.5,
+                        50.4
+                    ],
+                    [
+                        24.0,
+                        51.5
+                    ],
+                    [
+                        18.0,
+                        52.0
+                    ],
+                    [
+                        14.4,
+                        50.1
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "TurkStream",
+                "type": "gas",
+                "status": "active"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        38.9,
+                        44.6
+                    ],
+                    [
+                        37.0,
+                        44.0
+                    ],
+                    [
+                        34.0,
+                        43.0
+                    ],
+                    [
+                        31.0,
+                        42.5
+                    ],
+                    [
+                        29.3,
+                        41.5
+                    ],
+                    [
+                        28.9,
+                        41.0
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Trans-Mediterranean (Transmed)",
+                "type": "gas",
+                "status": "active"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        3.0,
+                        36.7
+                    ],
+                    [
+                        5.0,
+                        37.0
+                    ],
+                    [
+                        8.5,
+                        37.5
+                    ],
+                    [
+                        10.2,
+                        37.0
+                    ],
+                    [
+                        12.5,
+                        38.0
+                    ],
+                    [
+                        14.0,
+                        37.5
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "East-West Pipeline (Saudi)",
+                "type": "oil",
+                "status": "active"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        50.0,
+                        26.0
+                    ],
+                    [
+                        46.0,
+                        25.5
+                    ],
+                    [
+                        42.0,
+                        24.5
+                    ],
+                    [
+                        39.0,
+                        22.0
+                    ],
+                    [
+                        38.5,
+                        21.5
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Trans-Alaska Pipeline",
+                "type": "oil",
+                "status": "active"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -148.0,
+                        70.2
+                    ],
+                    [
+                        -149.0,
+                        68.0
+                    ],
+                    [
+                        -146.0,
+                        64.0
+                    ],
+                    [
+                        -146.4,
+                        61.2
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Keystone Pipeline",
+                "type": "oil",
+                "status": "active"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -110.0,
+                        52.0
+                    ],
+                    [
+                        -107.0,
+                        50.0
+                    ],
+                    [
+                        -104.0,
+                        48.0
+                    ],
+                    [
+                        -99.0,
+                        46.0
+                    ],
+                    [
+                        -97.0,
+                        42.0
+                    ],
+                    [
+                        -96.0,
+                        38.0
+                    ],
+                    [
+                        -95.0,
+                        30.0
+                    ]
+                ]
+            }
+        }
+    ]
+}

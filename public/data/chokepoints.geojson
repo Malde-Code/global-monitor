@@ -1,0 +1,117 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Strait of Hormuz",
+                "type": "chokepoint",
+                "avgWaitHours": 2,
+                "dailyTransits": 21
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    56.3,
+                    26.6
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Suez Canal",
+                "type": "chokepoint",
+                "avgWaitHours": 16,
+                "dailyTransits": 50
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    32.3,
+                    30.5
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Panama Canal",
+                "type": "chokepoint",
+                "avgWaitHours": 24,
+                "dailyTransits": 35
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.7,
+                    9.1
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Strait of Malacca",
+                "type": "chokepoint",
+                "avgWaitHours": 3,
+                "dailyTransits": 83
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.5,
+                    2.5
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Bab el-Mandeb",
+                "type": "chokepoint",
+                "avgWaitHours": 4,
+                "dailyTransits": 15
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    43.3,
+                    12.6
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Turkish Straits",
+                "type": "chokepoint",
+                "avgWaitHours": 8,
+                "dailyTransits": 45
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    29.0,
+                    41.1
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "GIUK Gap",
+                "type": "chokepoint",
+                "avgWaitHours": 0,
+                "dailyTransits": 12
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -20.0,
+                    63.0
+                ]
+            }
+        }
+    ]
+}

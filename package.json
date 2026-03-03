@@ -1,0 +1,33 @@
+{
+  "name": "world-map",
+  "version": "1.0.0",
+  "description": "Global Monitor – High-performance geospatial intelligence platform",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@deck.gl/core": "^9.2.10",
+    "@deck.gl/layers": "^9.2.10",
+    "@deck.gl/mapbox": "^9.2.10",
+    "@deck.gl/react": "^9.2.10",
+    "@types/node": "^25.3.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "deck.gl": "^9.2.10",
+    "mapbox-gl": "^3.19.0",
+    "next": "^14.2.35",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-map-gl": "^8.1.0",
+    "supercluster": "^8.0.1",
+    "typescript": "^5.9.3",
+    "zustand": "^5.0.11"
+  }
+}
