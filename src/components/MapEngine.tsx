@@ -171,10 +171,10 @@ export default function MapEngine() {
     // Load static GeoJSON data once (cached)
     useEffect(() => {
         Promise.all([
-            fetch('/data/conflict_zones.geojson').then((r) => r.json()),
-            fetch('/data/undersea_cables.geojson').then((r) => r.json()),
-            fetch('/data/pipelines.geojson').then((r) => r.json()),
-            fetch('/data/chokepoints.geojson').then((r) => r.json()),
+            fetch('/global-monitor/data/conflict_zones.geojson').then((r) => r.json()),
+            fetch('/global-monitor/data/undersea_cables.geojson').then((r) => r.json()),
+            fetch('/global-monitor/data/pipelines.geojson').then((r) => r.json()),
+            fetch('/global-monitor/data/chokepoints.geojson').then((r) => r.json()),
         ]).then(([conflictZones, cables, pipelines, chokepoints]) => {
             setStaticData({ conflictZones, cables, pipelines, chokepoints });
         });
