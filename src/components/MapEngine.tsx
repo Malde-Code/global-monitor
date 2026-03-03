@@ -12,7 +12,7 @@ import { IconLayer, GeoJsonLayer, ScatterplotLayer, TextLayer } from '@deck.gl/l
 import { useStore } from '@/store/store';
 import { createIconAtlas, ICON_MAPPING } from '@/lib/iconAtlas';
 import type { FlightPosition, ShipPosition, NewsEvent, ViewState } from '@/types';
-import type { PickingInfo } from '@deck.gl/core';
+import { Layer, PickingInfo } from '@deck.gl/core';
 
 // Mapbox style – dark satellite hybrid for intelligence look
 const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
@@ -43,33 +43,33 @@ function MapTooltip({ data }: { data: TooltipData | null }) {
             {layerType === 'flight' && (
                 <>
                     <div className="tooltip-title">
-                        ✈ {(object as FlightPosition).callsign || 'Unknown'}
+                        ✈ {(object as unknown as FlightPosition).callsign || 'Unknown'}
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">ICAO</span>
-                        <span className="tooltip-value">{(object as FlightPosition).icao24}</span>
+                        <span className="tooltip-value">{(object as unknown as FlightPosition).icao24}</span>
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">Origin</span>
-                        <span className="tooltip-value">{(object as FlightPosition).originCountry}</span>
+                        <span className="tooltip-value">{(object as unknown as FlightPosition).originCountry}</span>
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">Alt</span>
-                        <span className="tooltip-value">FL{Math.round((object as FlightPosition).altitude / 30.48)}</span>
+                        <span className="tooltip-value">FL{Math.round((object as unknown as FlightPosition).altitude / 30.48)}</span>
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">Speed</span>
-                        <span className="tooltip-value">{Math.round((object as FlightPosition).velocity * 1.944)} kts</span>
+                        <span className="tooltip-value">{Math.round((object as unknown as FlightPosition).velocity * 1.944)} kts</span>
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">Heading</span>
-                        <span className="tooltip-value">{Math.round((object as FlightPosition).heading)}°</span>
+                        <span className="tooltip-value">{Math.round((object as unknown as FlightPosition).heading)}°</span>
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">Type</span>
-                        <span className="tooltip-value">{(object as FlightPosition).category}</span>
+                        <span className="tooltip-value">{(object as unknown as FlightPosition).category}</span>
                     </div>
-                    {(object as FlightPosition).squawk === '7700' && (
+                    {(object as unknown as FlightPosition).squawk === '7700' && (
                         <div className="tooltip-row" style={{ color: '#ef4444', fontWeight: 600 }}>
                             <span>⚠ EMERGENCY – SQUAWK 7700</span>
                         </div>
@@ -79,25 +79,25 @@ function MapTooltip({ data }: { data: TooltipData | null }) {
             {layerType === 'ship' && (
                 <>
                     <div className="tooltip-title">
-                        🚢 {(object as ShipPosition).name}
+                        🚢 {(object as unknown as ShipPosition).name}
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">MMSI</span>
-                        <span className="tooltip-value">{(object as ShipPosition).mmsi}</span>
+                        <span className="tooltip-value">{(object as unknown as ShipPosition).mmsi}</span>
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">Type</span>
-                        <span className="tooltip-value">{(object as ShipPosition).shipType}</span>
+                        <span className="tooltip-value">{(object as unknown as ShipPosition).shipType}</span>
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">Speed</span>
-                        <span className="tooltip-value">{(object as ShipPosition).speed.toFixed(1)} kts</span>
+                        <span className="tooltip-value">{(object as unknown as ShipPosition).speed.toFixed(1)} kts</span>
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">Dest</span>
-                        <span className="tooltip-value">{(object as ShipPosition).destination}</span>
+                        <span className="tooltip-value">{(object as unknown as ShipPosition).destination}</span>
                     </div>
-                    {!(object as ShipPosition).aisActive && (
+                    {!(object as unknown as ShipPosition).aisActive && (
                         <div className="tooltip-row" style={{ color: '#f59e0b', fontWeight: 600 }}>
                             <span>⚠ AIS OFFLINE – DARK TARGET</span>
                         </div>
@@ -107,19 +107,19 @@ function MapTooltip({ data }: { data: TooltipData | null }) {
             {layerType === 'news' && (
                 <>
                     <div className="tooltip-title">
-                        📰 {(object as NewsEvent).title}
+                        📰 {(object as unknown as NewsEvent).title}
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">Source</span>
-                        <span className="tooltip-value">{(object as NewsEvent).source}</span>
+                        <span className="tooltip-value">{(object as unknown as NewsEvent).source}</span>
                     </div>
                     <div className="tooltip-row">
                         <span className="tooltip-label">Severity</span>
                         <span className="tooltip-value" style={{
-                            color: (object as NewsEvent).severity === 'critical' ? '#ef4444' :
-                                (object as NewsEvent).severity === 'high' ? '#f59e0b' : '#94a3b8'
+                            color: (object as unknown as NewsEvent).severity === 'critical' ? '#ef4444' :
+                                (object as unknown as NewsEvent).severity === 'high' ? '#f59e0b' : '#94a3b8'
                         }}>
-                            {(object as NewsEvent).severity.toUpperCase()}
+                            {(object as unknown as NewsEvent).severity.toUpperCase()}
                         </span>
                     </div>
                 </>
@@ -216,14 +216,14 @@ export default function MapEngine() {
 
     // ── Compose Deck.gl Layers ─────────────────────────────────
     const deckLayers = useMemo(() => {
-        const result: unknown[] = [];
+        const result: Layer[] = [];
 
         // 1. Conflict Zones (GeoJSON polygons)
         if (layers.conflicts?.visible && staticData.conflictZones) {
             result.push(
                 new GeoJsonLayer({
                     id: 'conflict-zones',
-                    data: staticData.conflictZones as unknown,
+                    data: staticData.conflictZones as any,
                     pickable: false,
                     filled: true,
                     stroked: true,
@@ -240,7 +240,7 @@ export default function MapEngine() {
             result.push(
                 new GeoJsonLayer({
                     id: 'undersea-cables',
-                    data: staticData.cables as unknown,
+                    data: staticData.cables as any,
                     pickable: false,
                     stroked: true,
                     filled: false,
@@ -257,7 +257,7 @@ export default function MapEngine() {
             result.push(
                 new GeoJsonLayer({
                     id: 'pipelines',
-                    data: staticData.pipelines as unknown,
+                    data: staticData.pipelines as any,
                     pickable: false,
                     stroked: true,
                     filled: false,
@@ -316,7 +316,7 @@ export default function MapEngine() {
                     id: 'flights-layer',
                     data: filteredFlights,
                     pickable: true,
-                    iconAtlas: iconAtlas,
+                    iconAtlas: iconAtlas as any,
                     iconMapping: ICON_MAPPING,
                     getIcon: (d: FlightPosition) => `aircraft-${d.category}`,
                     getPosition: (d: FlightPosition) =>
@@ -346,7 +346,7 @@ export default function MapEngine() {
                     id: 'ships-layer',
                     data: filteredShips,
                     pickable: true,
-                    iconAtlas: iconAtlas,
+                    iconAtlas: iconAtlas as any,
                     iconMapping: ICON_MAPPING,
                     getIcon: (d: ShipPosition) => `ship-${d.shipType}`,
                     getPosition: (d: ShipPosition) => [d.longitude, d.latitude] as [number, number],
@@ -424,10 +424,8 @@ export default function MapEngine() {
                     isHovering ? 'pointer' : 'grab'
                 }
                 parameters={{
-                    depthTest: true,
                     blend: true,
-                    blendFunc: [770, 771, 1, 771],
-                }}
+                } as any}
             >
                 <Map
                     mapStyle={MAP_STYLE}
